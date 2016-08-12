@@ -1,0 +1,118 @@
+<!doctype html>
+<html ng-app="athena">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Athena4math</title>
+  <link rel="stylesheet" href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+  <!--<link rel="stylesheet" href="css/bootstrap.css">-->
+  <!--<link rel="stylesheet" href="css/sweet-alert.css">-->
+  <link rel="stylesheet" href="css/styles.min.css">
+
+  <link href="css/vendor/all.css" rel="stylesheet">
+
+  <link href="css/app/app.css" rel="stylesheet">
+</head>
+<body>
+
+<div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <a href="/" class="navbar-brand"><i class="ion-images"></i> Athena</a>
+      <li><a href="#/">Home</a></li>
+      <li ng-if="!isAuthenticated()"><a href="#/login">Log in</a></li>
+      <li ng-if="!isAuthenticated()"><a href="#/signup">Sign up</a></li>
+      <li ng-if="isAuthenticated()"><a  href="#/dashboard">Dashboard</a></li>
+      <li ng-if="isAuthenticated()"><a  href="#/quiz">Quiz</a></li>
+      <li ng-if="isAuthenticated()"><a ng-click="logout()" href="">Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
+            <!-- notifications -->
+            <li class="dropdown notifications updates">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-bell-o"></i>
+                <span class="badge badge-primary">4</span>
+              </a>
+              <ul class="dropdown-menu" role="notification">
+                <li class="dropdown-header">Notifications</li>
+                <li class="media">
+                  <div class="pull-right">
+                    <span class="label label-success">New</span>
+                  </div>
+                  <div class="media-left">
+                    <img src="images/people/50/guy-2.jpg" alt="people" class="img-circle" width="30">
+                  </div>
+                  <div class="media-body">
+                    <a href="#">Adrian D.</a> posted <a href="#">a photo</a> on his timeline.
+                    <br/>
+                    <span class="text-caption text-muted">5 mins ago</span>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="pull-right">
+                    <span class="label label-success">New</span>
+                  </div>
+                  <div class="media-left">
+                    <img src="images/people/50/guy-6.jpg" alt="people" class="img-circle" width="30">
+                  </div>
+                  <div class="media-body">
+                    <a href="#">Bill</a> posted <a href="#">a comment</a> on Adrian's recent <a href="#">post</a>.
+                    <br/>
+                    <span class="text-caption text-muted">3 hrs ago</span>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-left">
+                    <span class="icon-block s30 bg-grey-200"><i class="fa fa-plus"></i></span>
+                  </div>
+                  <div class="media-body">
+                    <a href="#">Mary D.</a> and <a href="#">Michelle</a> are now friends.
+                    <p>
+                      <span class="text-caption text-muted">1 day ago</span>
+                    </p>
+                    <a href="">
+                      <img class="width-30 img-circle" src="images/people/50/woman-6.jpg" alt="people">
+                    </a>
+                    <a href="">
+                      <img class="width-30 img-circle" src="images/people/50/woman-3.jpg" alt="people">
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <!-- // END notifications -->
+            <!-- User -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
+                <img src="images/people/110/guy-5.jpg" alt="Bill" class="img-circle" width="40" /> {{currentUser}} <span class="caret"></span>
+              </a>
+            </li>
+          </ul>
+    
+  </div>
+</div>
+
+<div ng-view></div>
+
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="js/angular-messages.js"></script>
+<script src="js/angular-resource.js"></script>
+<script src="js/sweet-alert.js"></script>
+<script src="js/satellizer.js"></script>
+
+
+<script src="js/ng-app/app.js"></script>
+<script src="js/ng-app/services/api.js"></script>
+<script src="js/ng-app/services/user.js"></script>
+<script src="js/ng-app/directives/serverError.js"></script>
+<script src="js/ng-app/controllers/home.js"></script>
+<script src="js/ng-app/controllers/navbar.js"></script>
+<script src="js/ng-app/controllers/login.js"></script>
+<script src="js/ng-app/controllers/signup.js"></script>
+<script src="js/ng-app/controllers/dashboard.js"></script>
+<script src="js/ng-app/controllers/quiz.js"></script>
+
+</body>
+</html>

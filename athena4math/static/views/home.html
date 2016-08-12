@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div ng-if="isAuthenticated() && currentUser.username">
+    <div class="row">
+      <div class="jumbotron">
+      <h2><i class="ion-images"></i> Athena</h2>
+      <p>This is after the login<strong>Satellizer</strong>. To continue, please log in with your Gmail account or create a new email account.</p>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="!isAuthenticated()">
+    <div class="jumbotron">
+      <h2><i class="ion-images"></i> Athena</h2>
+      <p>This is SAT prep course clone powered by <strong>Satellizer</strong>. To continue, please log in with your Gmail account or create a new email account.</p>
+      <p>
+        <a class="btn btn-lg btn-success" href="#/login"><i class="ion-log-in"></i> Log in</a>
+        <a class="btn btn-lg btn-primary" href="#/signup"><i class="ion-person-add"></i> Create account</a>
+      </p>
+    </div>
+  </div>
+
+</div>

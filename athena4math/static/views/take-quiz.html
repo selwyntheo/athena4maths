@@ -1,0 +1,120 @@
+
+
+
+    <!-- content push wrapper -->
+    <div class="st-pusher" id="content" >
+
+      <!-- sidebar effects INSIDE of st-pusher: -->
+      <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+      <!-- this is the wrapper for the content -->
+      <div class="st-content" >
+
+        <!-- extra div for emulating position:fixed of the menu -->
+        <div class="st-content-inner padding-top-none">
+
+          <div class="page-section half bg-white">
+            <div class="container-fluid">
+              <div class="section-toolbar">
+                <div class="cell">
+                  <div class="media width-120 v-middle margin-none">
+                    <div class="media-left">
+                      <div class="icon-block bg-grey-200 s30"><i class="fa fa-question"></i></div>
+                    </div>
+                    <div class="media-body">
+                      <p class="text-body-2 text-light margin-none">Questions</p>
+                      <p class="text-title text-primary margin-none">25</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="media width-120 v-middle margin-none">
+                    <div class="media-left">
+                      <div class="icon-block bg-grey-200 s30"><i class="fa fa-diamond"></i></div>
+                    </div>
+                    <div class="media-body">
+                      <p class="text-body-2 text-light margin-none">Score</p>
+                      <p class="text-title text-success margin-none">800 pt</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-section equal">
+            <div class="container-fluid">
+              <div class="panel panel-default paper-shadow" data-z="0.5">
+                <div class="panel-heading">
+                  <h4 class="text-headline">Step by Step</h4>
+                </div>
+                <div class="panel-body">
+                  <div ng-show="mode=='quiz'">
+                    <div ng-repeat="question in filteredQuestions">
+                        <div class="label label-warning">Question {{currentPage}} of {{totalItems}}.</div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>{{currentPage}}. {{question.Name}}</h4>
+                            </div>
+                        </div>
+                        
+                        
+                          <div class="checkbox checkbox-primary" ng-repeat="option in question.Options">
+                              <div class="option">
+                                  <label for="{{option.Id}}">
+                                      <input id="{{option.Id}}" type="checkbox" ng-model="option.Selected" 
+                                      ng-change="onSelect(question, option);" />
+                                      {{option.Name}}
+                                  </label>
+                              </div>
+                          </div>
+      
+                    </div>
+                  </div>
+                  <div class="row review" ng-show="mode=='review'" >
+                      <div class="col-sm-4" ng-repeat="question in questions">
+                          <div ng-click="goTo($index + 1)" class="{{ isAnswered($index) == 'Answered'? 'answered': 'not-answered' }}">{{$index + 1}}. {{ isAnswered($index) }}</div>
+                      </div>
+                  </div>
+                  <div class="result" ng-show="mode=='result'" >
+                      <h2>Quiz Result</h2>
+                      <div ng-repeat="question in questions">
+                          <div class="result-question">
+                              <h4>{{$index + 1}}. {{question.Name}}</h4>
+                              <div class="row">
+                                  <div class="col-md-6" ng-repeat="Option in question.Options">
+                                      <div>
+                                          <input id="{{Option.Id}}" type="checkbox" disabled="disabled" ng-model="Option.Selected" />
+                                          {{Option.Name}}
+                                      </div>
+                                  </div>
+                              </div>
+                              <h4 class="alert {{ isCorrect(question) == 'correct'? 'alert-success': 'alert-danger'}}">Your answer is {{isCorrect(question)}}.</h4>
+                          </div>
+                      </div>
+                      <h4 class="alert alert-info text-center">You may close this window now.</h4>
+                  </div>
+              </div>
+
+              
+                <div class="panel-footer" ng-show="mode=='quiz'" >
+                  <div class="text-right">
+                    <button class="btn btn-info" ng-click="mode = 'review'"><i class="fa fa-pencil-square-o"></i> Review</button>
+                    <button class="btn btn-success"><i class="fa fa-save fa-fw"></i> Save Answer</button>
+                    <button class="btn btn-primary" ng-click="goTo(currentPage + 1);"><i class="fa fa-chevron-right fa-fw"></i> Next Question</button>
+
+                    <button class="btn btn-warning pull-left" ng-click="onSubmit();"><i class="fa fa-save fa-fw"></i> Submit Quiz</button>
+                    
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /st-content-inner -->
+
+      </div>
+      <!-- /st-content -->
+
+    </div>
+    <!-- /st-pusher -->
